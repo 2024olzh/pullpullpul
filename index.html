@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800;900&family=Bangers&family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR:wght@500;700&family=Nanum+Pen+Script&display=swap"
+    rel="stylesheet">
+  <script type="importmap">
+{
+  "imports": {}
+}
+</script>
+</head>
+
+<body>
+  <main id="app">
+    <!-- Page 1: Setup -->
+    <section id="page-setup" class="page">
+      <!-- Retro Grid Background -->
+      <div class="retro-grid-bg"></div>
+
+      <div class="setup-container">
+        <h1 class="title-modern">
+          <span class="gradient-text">당겨당겨</span>
+        </h1>
+
+        <div class="game-info-card">
+          <div class="info-header">
+            <div class="info-icon">🎮</div>
+            <h2>GAME RULES</h2>
+          </div>
+          <div class="rules-grid">
+            <div class="rule-item">
+              <span class="rule-number">1</span>
+              <p>줄 중앙에는 키워드 하나가 있다.</p>
+            </div>
+            <div class="rule-item">
+              <span class="rule-number">2</span>
+              <p>버튼을 눌러 키워드를 우리 팀 쪽으로 당긴다.</p>
+            </div>
+            <div class="rule-item">
+              <span class="rule-number">3</span>
+              <p>한 팀은 최대 3개의 키워드만 가질 수 있다.</p>
+            </div>
+            <div class="rule-item">
+              <span class="rule-number">4</span>
+              <p>미리 정해 둔 우리 팀 우선 키워드를 얻으면<br>→ 1개당 10점</p>
+            </div>
+            <div class="rule-item">
+              <span class="rule-number">5</span>
+              <p>두 팀이 팽팽해 키워드가 중앙에 남으면,<br>→ 이유를 더 잘 설명한 팀이 20점</p>
+            </div>
+          </div>
+          <div class="rules-footer">
+            <p>⚠️ 점수보다 왜 그 키워드를 우선순위로 선택했는지를 설명하는 것이 더 중요!</p>
+          </div>
+        </div>
+
+        <form id="values-form" class="values-form-modern" autocomplete="off">
+          <div class="form-header">
+            <h3>KEYWORD SETUP</h3>
+            <p class="form-subtitle">게임에서 사용할 6가지 키워드를 입력하세요</p>
+          </div>
+          <div class="inputs-modern">
+            <div class="input-wrapper">
+              <label class="input-label">키워드 1</label>
+              <input name="v0" class="value-input-modern" value="자기만족" placeholder="예: 자기만족" />
+            </div>
+            <div class="input-wrapper">
+              <label class="input-label">키워드 2</label>
+              <input name="v1" class="value-input-modern" value="경제적 안정" placeholder="예: 경제적 안정" />
+            </div>
+            <div class="input-wrapper">
+              <label class="input-label">키워드 3</label>
+              <input name="v2" class="value-input-modern" value="사회적 지위" placeholder="예: 사회적 지위" />
+            </div>
+            <div class="input-wrapper">
+              <label class="input-label">키워드 4</label>
+              <input name="v3" class="value-input-modern" value="가정의 행복" placeholder="예: 가정의 행복" />
+            </div>
+            <div class="input-wrapper">
+              <label class="input-label">키워드 5</label>
+              <input name="v4" class="value-input-modern" value="건강" placeholder="예: 건강" />
+            </div>
+            <div class="input-wrapper">
+              <label class="input-label">키워드 6</label>
+              <input name="v5" class="value-input-modern" value="인간관계" placeholder="예: 인간관계" />
+            </div>
+          </div>
+          <button id="to-game-btn" class="start-game-btn" type="button" disabled>
+            <span class="btn-text">START GAME</span>
+            <span class="btn-icon">→</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Page 2: Game -->
+    <section id="page-game" class="page hidden">
+      <!-- Retro Grid Background for game page too -->
+      <div class="retro-grid-bg"></div>
+
+      <div class="game-container">
+        <!-- Game Header -->
+        <div class="game-header">
+          <h2 class="game-title">
+            <span class="gradient-text-small">당겨당겨</span>
+          </h2>
+          <div class="timer-card">
+            <div id="timer" aria-live="polite">30</div>
+            <div class="timer-label">TIME LEFT</div>
+          </div>
+        </div>
+
+        <!-- Arena Card -->
+        <div class="arena-card">
+          <div id="arena">
+            <div class="goal-zone left-goal"></div>
+            <div id="rope-container">
+              <div class="rope-row" id="rope-row">
+                <!-- rows will be cloned/filled by JS -->
+              </div>
+            </div>
+            <div class="goal-zone right-goal"></div>
+          </div>
+        </div>
+
+        <!-- Controls Card -->
+        <div class="controls-card">
+          <div class="control-group">
+            <label class="control-label">DURATION</label>
+            <select id="duration-select" class="duration-select-modern">
+              <option value="15">15 SEC</option>
+              <option value="30" selected>30 SEC</option>
+              <option value="60">60 SEC</option>
+            </select>
+          </div>
+          <button id="start-btn" class="control-btn">
+            <span class="btn-text">START!</span>
+            <span class="btn-icon">▶</span>
+          </button>
+        </div>
+
+        <!-- Instruction -->
+        <div class="game-instruction">
+          💡 시간 종료 후, 각 팀이 확보한 키워드를 공개하고 토론 단계로 넘어갑니다.
+        </div>
+      </div>
+    </section>
+
+    <div id="toast" aria-live="polite"></div>
+
+    <!-- End-of-game modal -->
+    <div id="end-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-panel">
+        <h3>게임이 종료되었습니다</h3>
+        <p id="end-modal-detail" class="modal-detail">시간이 종료되어 점수 집계가 완료되었습니다.</p>
+        <div class="modal-actions">
+          <button id="end-modal-close" class="big-btn">확인</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>
