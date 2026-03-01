@@ -541,3 +541,14 @@ setInterval(() => {
   renderFlag();
   updateBlockedStates();
 }, 800);
+
+// Prevent zoom gestures on mobile
+document.addEventListener('touchstart', (e) => {
+  if (e.touches.length > 1) {
+    e.preventDefault();
+  }
+}, { passive: false });
+
+document.addEventListener('gesturestart', (e) => {
+  e.preventDefault();
+});
