@@ -542,6 +542,27 @@ setInterval(() => {
   updateBlockedStates();
 }, 800);
 
+// Letterboxing Scaling Logic
+const baseWidth = 1600;
+const baseHeight = 900;
+
+function fitScreen() {
+  const container = document.getElementById('screen-container');
+  const app = document.getElementById('app');
+  if (!container || !app) return;
+
+  const winW = window.innerWidth;
+  const winH = window.innerHeight;
+
+  const scale = Math.min(winW / baseWidth, winH / baseHeight);
+  // Keep translate(-50%, -50%) to maintain center alignment while scaling
+  app.style.transform = `translate(-50%, -50%) scale(${scale})`;
+}
+
+window.addEventListener('resize', fitScreen);
+window.addEventListener('load', fitScreen);
+fitScreen();
+
 // Prevent zoom gestures on mobile
 document.addEventListener('touchstart', (e) => {
   if (e.touches.length > 1) {
@@ -552,3 +573,11 @@ document.addEventListener('touchstart', (e) => {
 document.addEventListener('gesturestart', (e) => {
   e.preventDefault();
 });
+
+// Explicitly block scrolling on touches for the game screen
+document.addEventListener('touchmove', (e) => {
+  if (document.body.classList.contains('in-game')) {
+    e.preventDefault();
+  }
+}, { passive: false });
+

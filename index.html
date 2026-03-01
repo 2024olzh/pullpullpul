@@ -19,155 +19,159 @@
 </head>
 
 <body>
-  <main id="app">
-    <!-- Page 1: Setup -->
-    <section id="page-setup" class="page">
-      <!-- Retro Grid Background -->
-      <div class="retro-grid-bg"></div>
+  <div id="screen-container">
+    <main id="app">
+      <!-- Page 1: Setup -->
+      <section id="page-setup" class="page">
+        <!-- Retro Grid Background -->
+        <div class="retro-grid-bg"></div>
 
-      <div class="setup-container">
-        <h1 class="title-modern">
-          <span class="gradient-text">당겨당겨</span>
-        </h1>
+        <div class="setup-container">
+          <h1 class="title-modern">
+            <span class="gradient-text">당겨당겨</span>
+          </h1>
 
-        <div class="game-info-card">
-          <div class="info-header">
-            <div class="info-icon">🎮</div>
-            <h2>GAME RULES</h2>
-          </div>
-          <div class="rules-grid">
-            <div class="rule-item">
-              <span class="rule-number">1</span>
-              <p>화면 중앙에는 하나의 키워드가 적힌 줄이 있다.</p>
-            </div>
-            <div class="rule-item">
-              <span class="rule-number">2</span>
-              <p>각 팀은 버튼을 눌러 키워드를 자기 팀 방향으로 당길 수 있다.</p>
-            </div>
-            <div class="rule-item">
-              <span class="rule-number">3</span>
-              <p>한 팀은 최대 3개의 키워드만 가질 수 있다.</p>
-            </div>
-            <div class="rule-item">
-              <span class="rule-number">4</span>
-              <p>게임 시작 전, 각 팀은 미리 갖고 싶은 키워드를 정해 둔다.<br>→ 우선순위로 정한 키워드를 얻으면 1개당 10점</p>
-            </div>
-            <div class="rule-item">
-              <span class="rule-number">5</span>
-              <p>두 팀이 팽팽하게 당겨 키워드가 중앙에 남으면,<br>→ 이유를 더 잘 설명한 팀이 20점</p>
-            </div>
-          </div>
-          <div class="rules-footer">
-            <p>⚠️ 점수보다 왜 그 키워드를 우선순위로 선택했는지를 설명하는 것이 더 중요!</p>
-          </div>
-        </div>
-
-        <form id="values-form" class="values-form-modern" autocomplete="off">
-          <div class="form-header">
-            <h3>KEYWORD SETUP</h3>
-            <p class="form-subtitle">게임에서 사용할 6가지 키워드를 입력하세요</p>
-          </div>
-          <div class="inputs-modern">
-            <div class="input-wrapper">
-              <label class="input-label">키워드 1</label>
-              <input name="v0" class="value-input-modern" value="자기만족" placeholder="예: 자기만족" />
-            </div>
-            <div class="input-wrapper">
-              <label class="input-label">키워드 2</label>
-              <input name="v1" class="value-input-modern" value="경제적 안정" placeholder="예: 경제적 안정" />
-            </div>
-            <div class="input-wrapper">
-              <label class="input-label">키워드 3</label>
-              <input name="v2" class="value-input-modern" value="사회적 지위" placeholder="예: 사회적 지위" />
-            </div>
-            <div class="input-wrapper">
-              <label class="input-label">키워드 4</label>
-              <input name="v3" class="value-input-modern" value="가정의 행복" placeholder="예: 가정의 행복" />
-            </div>
-            <div class="input-wrapper">
-              <label class="input-label">키워드 5</label>
-              <input name="v4" class="value-input-modern" value="건강" placeholder="예: 건강" />
-            </div>
-            <div class="input-wrapper">
-              <label class="input-label">키워드 6</label>
-              <input name="v5" class="value-input-modern" value="인간관계" placeholder="예: 인간관계" />
-            </div>
-          </div>
-          <button id="to-game-btn" class="start-game-btn" type="button" disabled>
-            <span class="btn-text">START GAME</span>
-            <span class="btn-icon">→</span>
-          </button>
-        </form>
-      </div>
-    </section>
-
-    <!-- Page 2: Game -->
-    <section id="page-game" class="page hidden">
-      <!-- Retro Grid Background for game page too -->
-      <div class="retro-grid-bg"></div>
-
-      <div class="game-container">
-        <!-- Game Header -->
-        <div class="game-header">
-          <h2 class="game-title">
-            <span class="gradient-text-small">당겨당겨</span>
-          </h2>
-          <div class="timer-card">
-            <div id="timer" aria-live="polite">30</div>
-            <div class="timer-label">TIME LEFT</div>
-          </div>
-        </div>
-
-        <!-- Arena Card -->
-        <div class="arena-card">
-          <div id="arena">
-            <div class="goal-zone left-goal"></div>
-            <div id="rope-container">
-              <div class="rope-row" id="rope-row">
-                <!-- rows will be cloned/filled by JS -->
+          <div class="setup-main-content">
+            <div class="game-info-card">
+              <div class="info-header">
+                <div class="info-icon">🎮</div>
+                <h2>GAME RULES</h2>
+              </div>
+              <div class="rules-grid">
+                <div class="rule-item">
+                  <span class="rule-number">1</span>
+                  <p>화면 중앙에는 하나의 키워드가 적힌 줄이 있다.</p>
+                </div>
+                <div class="rule-item">
+                  <span class="rule-number">2</span>
+                  <p>각 팀은 버튼을 눌러 키워드를 자기 팀 방향으로 당길 수 있다.</p>
+                </div>
+                <div class="rule-item">
+                  <span class="rule-number">3</span>
+                  <p>한 팀은 최대 3개의 키워드만 가질 수 있다.</p>
+                </div>
+                <div class="rule-item">
+                  <span class="rule-number">4</span>
+                  <p>게임 시작 전, 각 팀은 미리 갖고 싶은 키워드를 정해 둔다.<br>→ 우선순위로 정한 키워드를 얻으면 1개당 10점</p>
+                </div>
+                <div class="rule-item">
+                  <span class="rule-number">5</span>
+                  <p>두 팀이 팽팽하게 당겨 키워드가 중앙에 남으면,<br>→ 이유를 더 잘 설명한 팀이 20점</p>
+                </div>
+              </div>
+              <div class="rules-footer">
+                <p>⚠️ 점수보다 왜 그 키워드를 우선순위로 선택했는지를 설명하는 것이 더 중요!</p>
               </div>
             </div>
-            <div class="goal-zone right-goal"></div>
+
+            <form id="values-form" class="values-form-modern" autocomplete="off">
+              <div class="form-header">
+                <h3>KEYWORD SETUP</h3>
+                <p class="form-subtitle">게임에서 사용할 6가지 키워드를 입력하세요</p>
+              </div>
+              <div class="inputs-modern">
+                <div class="input-wrapper">
+                  <label class="input-label">키워드 1</label>
+                  <input name="v0" class="value-input-modern" value="자기만족" placeholder="예: 자기만족" />
+                </div>
+                <div class="input-wrapper">
+                  <label class="input-label">키워드 2</label>
+                  <input name="v1" class="value-input-modern" value="경제적 안정" placeholder="예: 경제적 안정" />
+                </div>
+                <div class="input-wrapper">
+                  <label class="input-label">키워드 3</label>
+                  <input name="v2" class="value-input-modern" value="사회적 지위" placeholder="예: 사회적 지위" />
+                </div>
+                <div class="input-wrapper">
+                  <label class="input-label">키워드 4</label>
+                  <input name="v3" class="value-input-modern" value="가정의 행복" placeholder="예: 가정의 행복" />
+                </div>
+                <div class="input-wrapper">
+                  <label class="input-label">키워드 5</label>
+                  <input name="v4" class="value-input-modern" value="건강" placeholder="예: 건강" />
+                </div>
+                <div class="input-wrapper">
+                  <label class="input-label">키워드 6</label>
+                  <input name="v5" class="value-input-modern" value="인간관계" placeholder="예: 인간관계" />
+                </div>
+              </div>
+              <button id="to-game-btn" class="start-game-btn" type="button" disabled>
+                <span class="btn-text">START GAME</span>
+                <span class="btn-icon">→</span>
+              </button>
+            </form>
           </div>
         </div>
+      </section>
 
-        <!-- Controls Card -->
-        <div class="controls-card">
-          <div class="control-group">
-            <label class="control-label">DURATION</label>
-            <select id="duration-select" class="duration-select-modern">
-              <option value="15">15 SEC</option>
-              <option value="30" selected>30 SEC</option>
-              <option value="60">60 SEC</option>
-            </select>
+      <!-- Page 2: Game -->
+      <section id="page-game" class="page hidden">
+        <!-- Retro Grid Background for game page too -->
+        <div class="retro-grid-bg"></div>
+
+        <div class="game-container">
+          <!-- Game Header -->
+          <div class="game-header">
+            <h2 class="game-title">
+              <span class="gradient-text-small">당겨당겨</span>
+            </h2>
+            <div class="timer-card">
+              <div id="timer" aria-live="polite">30</div>
+              <div class="timer-label">TIME LEFT</div>
+            </div>
           </div>
-          <button id="start-btn" class="control-btn">
-            <span class="btn-text">START!</span>
-            <span class="btn-icon">▶</span>
-          </button>
+
+          <!-- Arena Card -->
+          <div class="arena-card">
+            <div id="arena">
+              <div class="goal-zone left-goal"></div>
+              <div id="rope-container">
+                <div class="rope-row" id="rope-row">
+                  <!-- rows will be cloned/filled by JS -->
+                </div>
+              </div>
+              <div class="goal-zone right-goal"></div>
+            </div>
+          </div>
+
+          <!-- Controls Card -->
+          <div class="controls-card">
+            <div class="control-group">
+              <label class="control-label">DURATION</label>
+              <select id="duration-select" class="duration-select-modern">
+                <option value="15">15 SEC</option>
+                <option value="30" selected>30 SEC</option>
+                <option value="60">60 SEC</option>
+              </select>
+            </div>
+            <button id="start-btn" class="control-btn">
+              <span class="btn-text">START!</span>
+              <span class="btn-icon">▶</span>
+            </button>
+          </div>
+
+
         </div>
+      </section>
 
+      <div id="toast" aria-live="polite"></div>
 
-      </div>
-    </section>
-
-    <div id="toast" aria-live="polite"></div>
-
-    <div id="end-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
-      <div class="modal-panel">
-        <h3>게임이 종료되었습니다</h3>
-        <p id="end-modal-detail" class="modal-detail">시간이 종료되어 점수 집계가 완료되었습니다.</p>
-        <div class="modal-actions">
-          <button id="end-modal-close" class="big-btn">확인</button>
+      <div id="end-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-panel">
+          <h3>게임이 종료되었습니다</h3>
+          <p id="end-modal-detail" class="modal-detail">시간이 종료되어 점수 집계가 완료되었습니다.</p>
+          <div class="modal-actions">
+            <button id="end-modal-close" class="big-btn">확인</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Footer Credit -->
-    <footer class="game-footer">
-      <p>© 가재쌤 | <a href="https://blog.naver.com/gajae_ssam" target="_blank" class="footer-link">수업 자료 공유</a></p>
-    </footer>
-  </main>
+      <!-- Footer Credit -->
+      <footer class="game-footer">
+        <p>© 가재쌤 | <a href="https://blog.naver.com/gajae_ssam" target="_blank" class="footer-link">수업 자료 공유</a></p>
+      </footer>
+    </main>
+  </div>
 
   <script type="module" src="./main.js"></script>
 </body>
