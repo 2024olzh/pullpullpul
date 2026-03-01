@@ -513,6 +513,7 @@ toGameBtn.addEventListener('click', () => {
   buildRopes(values);
   pageSetup.classList.add('hidden');
   pageGame.classList.remove('hidden');
+  document.body.classList.add('in-game');
   // wire main big buttons after DOM built
   wireMainButtons();
   // initial scores/timer
